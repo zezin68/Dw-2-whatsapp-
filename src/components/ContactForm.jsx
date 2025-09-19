@@ -7,6 +7,16 @@ const ContactForm = ({
   onSave, 
   onCancel 
 }) => {
+  const handleChange = (event) => {
+    const value = event.target.value;
+    // Remover qualquer coisa que não seja número (conjunto específico)
+    const onlyNumbers = value.replace(/\D/g, '');
+  
+    // Limitar a 11 números
+    if (onlyNumbers.length <= 11) {
+      setNewContact(prev => ({ ...prev, phone: onlyNumbers }))
+    }
+  };
   return (
     <div className="contact-form">
       <h3 className="form-title">
@@ -28,7 +38,7 @@ const ContactForm = ({
           <input
             type="text"
             value={newContact.phone}
-            onChange={(e) => setNewContact(prev => ({ ...prev, phone: e.target.value }))}
+            onChange={(e) => handleChange(e) }
             placeholder="Número"
             className="form-input"
           />

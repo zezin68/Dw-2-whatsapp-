@@ -6,8 +6,8 @@ import './ContactBook.css';
 
 const ContactBook = () => {
   const [contacts, setContacts] = useState([
-    { id: 1, name: 'João', phone: '(44) 91234-1234' },
-    { id: 2, name: 'Maria', phone: '(44) 98888-1234' }
+    { id: 1, name: 'João', phone: '44912341234' },
+    { id: 2, name: 'Maria', phone: '44988881234' }
   ]);
   
   const [newContact, setNewContact] = useState({ name: '', phone: '' });

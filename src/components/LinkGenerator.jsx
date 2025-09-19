@@ -3,10 +3,26 @@ import { MessageCircle } from 'lucide-react';
 import './LinkGenerator.css';
 
 const LinkGenerator = () => {
-  const [phoneNumber, setPhoneNumber] = useState('45464');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [message, setMessage] = useState('');
 
+  const handleChange = (event) => {
+    const value = event.target.value;
+    // Remover qualquer coisa que não seja número (conjunto específico)
+    const onlyNumbers = value.replace(/\D/g, '');
+
+    // Limitar a 11 números
+    if (onlyNumbers.length <= 11) {
+      setPhoneNumber(onlyNumbers);
+    }
+  };
+
   const generateWhatsAppLink = () => {
+    if (phoneNumber.length < 11) {
+      alert("Insira 11 caracteres")
+      return
+      ;
+    }
     const cleanPhone = phoneNumber.replace(/\D/g, '');
     const encodedMessage = encodeURIComponent(message);
     const link = `https://wa.me/55${cleanPhone}${message ? `?text=${encodedMessage}` : ''}`;
@@ -28,8 +44,8 @@ const LinkGenerator = () => {
           <input
             type="text"
             value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            placeholder="45464"
+            onChange={(e) => handleChange(e)}
+            placeholder="Insira um número"
             className="form-input"
           />
         </div>

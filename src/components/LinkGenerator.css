@@ -57,7 +57,6 @@
   
   .form-input:focus {
     outline: none;
-    ring: 2px solid #10b981;
     border-color: #10b981;
   }
   
@@ -75,7 +74,6 @@
   
   .form-textarea:focus {
     outline: none;
-    ring: 2px solid #10b981;
     border-color: #10b981;
   }
   
