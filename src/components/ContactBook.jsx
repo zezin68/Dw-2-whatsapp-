@@ -16,6 +16,11 @@ const ContactBook = () => {
 
   const handleSaveContact = () => {
     if (!newContact.name || !newContact.phone) return;
+    if (newContact.phone.length < 11) {
+      alert("Insira 11 caracteres")
+      return
+      ;
+    }
     
     if (editingContact) {
       setContacts(prev => prev.map(contact => 
