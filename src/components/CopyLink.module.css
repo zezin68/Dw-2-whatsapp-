@@ -1,0 +1,79 @@
+.whatsapp-button {
+  width: 100%;
+  background: #10b981;
+  color: white;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.whatsapp-button:hover {
+  background-color: #059669;
+}
+
+.button-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.generate-button:hover {
+  background: #059669;
+}
+
+.link-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.formLabel {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px;
+  background: #fff;
+}
+
+.link-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.copy-button {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.copy-button:hover {
+  transition: 0.2s;
+  transform: scale(1.07);
+}
+
+.boxBoxLink {
+  display: flex;
+  align-items: center;
+}

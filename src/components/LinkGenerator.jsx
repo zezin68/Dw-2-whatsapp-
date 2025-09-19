@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
+import CopyLink from "./CopyLink";
 import "./LinkGenerator.css";
 
 const LinkGenerator = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
   const [linkDois, setLinkDois] = useState("");
+  const [mostarLink, setMostarLink] = useState(false);
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -28,6 +30,7 @@ const LinkGenerator = () => {
     setLinkDois(
       `https://wa.me/55${cleanPhone}${message ? `?text=${encodedMessage}` : ""}`
     );
+    setMostarLink(true);
   };
 
   return (
@@ -64,35 +67,9 @@ const LinkGenerator = () => {
           <MessageCircle className="button-icon" />
           Preparar Mensagem
         </button>
-
-        <div>
-    <div className="link-container">
-      <label className="formLabel">Link gerado:</label>
-
-      <div className="link-box">
-        <input type="text" value={linkDois} readOnly className="link-input" />
       </div>
 
-      <div>
-        <button
-          className="copy-button"
-          onClick={() => navigator.clipboard.writeText(linkDois)}>
-          📋
-        </button>
-
-      </div>
-
-      <button
-        onClick={() => window.open(linkDois, "_blank")}
-        className="whatsapp-button"
-      >
-        <MessageCircle className="button-icon" />
-        Abrir WhatsApp
-      </button>
-    </div>
-
-        </div>
-      </div>
+      {mostarLink && <CopyLink linkDois={linkDois} />}
     </div>
   );
 };

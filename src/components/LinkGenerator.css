@@ -1,177 +1,104 @@
 .link-generator {
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .link-generator-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .link-generator-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: #10b981;
-  }
-  
-  .link-generator h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1f2937;
-    margin: 0;
-  }
-  
-  .link-generator-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #374151;
-    margin-bottom: 0.5rem;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    transition: all 0.2s;
-    box-sizing: border-box;
-  }
-  
-  .form-input:focus {
-    outline: none;
-    border-color: #10b981;
-  }
-  
-  .form-textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    transition: all 0.2s;
-    resize: none;
-    box-sizing: border-box;
-    font-family: inherit;
-  }
-  
-  .form-textarea:focus {
-    outline: none;
-    border-color: #10b981;
-  }
-  
-  .generate-button {
-    width: 100%;
-    background: #10b981;
-    color: white;
-    font-weight: 600;
-    padding: 1rem 1.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    transition: background-color 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .generate-button:hover {
-    background: #059669;
-  }
-  
-  .button-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
 
-  .link-container {
+.link-generator-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.link-generator-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #10b981;
+}
+
+.link-generator h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.link-generator-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  font-family: Arial, sans-serif;
+  gap: 1.5rem;
 }
 
-.formLabel {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.link-box {
+.form-group {
   display: flex;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 4px;
-  background: #fff;
+  flex-direction: column;
 }
 
-.link-input {
-  flex: 1;
-  border: none;
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
   outline: none;
-  font-size: 14px;
+  border-color: #10b981;
 }
 
-.copy-button {
-  display: flex;
-  align-items: center;
-  background: none;
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+  resize: none;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #10b981;
+}
+
+.generate-button {
+  width: 100%;
+  background: #10b981;
+  color: white;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
   border: none;
-  cursor: pointer;
-  font-size: 18px;
-  border: solid 1px #000000;
-}
-
-.boxBoxLink{
-  display: flex;
-  align-items: center;
-}
-
-.whatsapp-button {
+  transition: background-color 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  margin-top: 8px;
-  padding: 10px;
-  background-color: #059669;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
+  gap: 0.5rem;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 14px;
-  transition: background 0.2s;
-}
-
-.whatsapp-button:hover {
-  background-color: #059669;
-}
-
-.button-icon {
-  width: 18px;
-  height: 18px;
+  font-size: 1rem;
 }
 
 .generate-button:hover {
-    background: #059669;
-  }
+  background: #059669;
+}
+
+.button-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
