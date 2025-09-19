@@ -5,30 +5,37 @@ import "./LinkGenerator.css";
 
 const LinkGenerator = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [displayPhone, setDisplayPhone] = useState("");
   const [message, setMessage] = useState("");
   const [linkDois, setLinkDois] = useState("");
   const [mostarLink, setMostarLink] = useState(false);
 
-  const handleChange = (event) => {
-    const value = event.target.value;
-    // Remover qualquer coisa que não seja número (conjunto específico)
-    const onlyNumbers = value.replace(/\D/g, "");
+  const formatPhoneNumber = (value) => {
+    const onlyNumbers = value.replace(/\D/g, "").slice(0, 11);
+    setPhoneNumber(onlyNumbers);
 
-    // Limitar a 11 números
-    if (onlyNumbers.length <= 11) {
-      setPhoneNumber(onlyNumbers);
+    let formatado = onlyNumbers;
+
+    if (formatado.length > 2) {
+      formatado = `(${formatado.slice(0, 2)}) ${formatado.slice(2)}`;
     }
+    if (formatado.length > 9) {
+      formatado = `${formatado.slice(0, 9)}-${formatado.slice(9)}`;
+    }
+
+    setDisplayPhone(formatado);
   };
 
   const generateWhatsAppLink = () => {
     if (phoneNumber.length < 11) {
-      alert("Insira 11 caracteres");
+      alert("Insira 11 números");
       return;
     }
-    const cleanPhone = phoneNumber.replace(/\D/g, "");
     const encodedMessage = encodeURIComponent(message);
     setLinkDois(
-      `https://wa.me/55${cleanPhone}${message ? `?text=${encodedMessage}` : ""}`
+      `https://wa.me/55${phoneNumber}${
+        message ? `?text=${encodedMessage}` : ""
+      }`
     );
     setMostarLink(true);
   };
@@ -45,9 +52,9 @@ const LinkGenerator = () => {
           <label className="form-label">Número do WhatsApp</label>
           <input
             type="text"
-            value={phoneNumber}
-            onChange={(e) => handleChange(e)}
-            placeholder="Insira um número"
+            value={displayPhone}
+            onChange={(e) => formatPhoneNumber(e.target.value)}
+            placeholder="(XX) XXXXX-XXXX"
             className="form-input"
           />
         </div>
