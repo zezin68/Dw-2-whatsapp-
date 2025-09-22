@@ -2,14 +2,15 @@ import Header from "./components/Header";
 import LinkGenerator from "./components/LinkGenerator";
 import ContactBook from "./components/ContactBook";
 import { useState } from "react";
-import { supabase } from "./supabaseCLient";
+// import { supabase } from "./supabaseClient";
 import "./App.css";
 
 const App = () => {
-  const consultaTarefas = async () => {
-    const [data, error] = await supabase.from("tarefas").select("*");
-    setTarefas(data);
-  };
+  // const [tarefas, setTarefas] = useState([]);
+  // const consultaTarefas = async () => {
+  //   const [data, error] = await supabase.from("tarefas").select("*");
+  //   setTarefas(data);
+  // };
 
   return (
     <div className="app">
@@ -36,8 +37,8 @@ const App = () => {
               ☺️
             </button>
           </p>
-          <div>{tarefas.map((item) => item)}</div>
-          <button onClick={consultaTarefas}>OK</button>
+          {/* <div>{tarefas.map((item) => item)}</div>
+          <button onClick={consultaTarefas}>OK</button> */}
         </footer>
       </div>
     </div>
