@@ -15,7 +15,9 @@ const App = () => {
         </div>
         
         <footer className="app-footer">
-          <p>WhatsHub - Simplifique suas conversas no WhatsApp</p>
+
+            <p>
+  WhatsHub - Simplifique suas conversas no WhatsApp <button className="musica" onClick={() => window.open("https://youtu.be/YBez2FYTubg?si=ZX8YqlcdkRxUZY63", "_blank")}>☺️</button></p>
         </footer>
       </div>
     </div>
