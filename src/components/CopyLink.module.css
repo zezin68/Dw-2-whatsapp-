@@ -86,3 +86,18 @@
   height: 0.8rem;
   color: #059669;
 }
+
+/* Fixando link copiado ao botão*/
+
+.copy-button {
+  position: relative;
+}
+
+.link-copiado {
+  position: absolute;
+  top: -25px;
+  right: 0;
+  color: #059669;
+  font-size: 12px;
+  white-space: nowrap;
+}
