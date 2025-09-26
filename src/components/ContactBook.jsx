@@ -17,7 +17,7 @@ const ContactBook = () => {
   const handleSaveContact = () => {
     if (!newContact.name || !newContact.phone) return;
     if (newContact.phone.length < 11) {
-      alert("Insira 11 caracteres")
+      alert("Insira 11 números")
       return
       ;
     }
