@@ -71,9 +71,18 @@
 .copy-button:hover {
   transition: 0.2s;
   transform: scale(1.07);
+  position: relative;
 }
 
 .boxBoxLink {
   display: flex;
   align-items: center;
+}
+
+.link-copiado {
+  padding: 0;
+  padding-left: 80%;
+  font-size: 0.8rem;
+  height: 0.8rem;
+  color: #059669;
 }
