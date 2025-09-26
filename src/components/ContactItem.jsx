@@ -1,5 +1,5 @@
-import { Trash2 } from 'lucide-react';
-import './ContactItem.css';
+import { Trash2 } from "lucide-react";
+import "./ContactItem.css";
 
 const ContactItem = ({ contact, onEdit, onDelete, onMessage }) => {
   return (
@@ -24,6 +24,7 @@ const ContactItem = ({ contact, onEdit, onDelete, onMessage }) => {
         <button
           onClick={() => onDelete(contact.id)}
           className="action-button delete-button"
+          title="Excluir"
         >
           <Trash2 className="delete-icon" />
         </button>

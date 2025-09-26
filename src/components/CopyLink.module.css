@@ -33,6 +33,7 @@
   flex-direction: column;
   gap: 8px;
   font-family: Arial, sans-serif;
+  margin-top: 1rem;
 }
 
 .formLabel {
@@ -41,19 +42,25 @@
 }
 
 .link-box {
+  height: 2.7rem;
   display: flex;
   align-items: center;
-  border: 1px solid #ddd;
+  padding-left: 0.7rem;
+  border: 1px solid #989898;
   border-radius: 6px;
-  padding: 4px;
   background: #fff;
 }
 
 .link-input {
+  max-height: 100%;
   flex: 1;
   border: none;
   outline: none;
   font-size: 14px;
+  color: #245eff;
+  word-break: break-all;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .copy-button {

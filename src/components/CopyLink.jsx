@@ -1,4 +1,4 @@
-import { MessageCircle, Clipboard, FastForward } from "lucide-react";
+import { MessageCircle, Copy } from "lucide-react";
 import { useState } from "react";
 import styles from "./CopyLink.module.css";
 
@@ -17,17 +17,16 @@ function CopyLink({ linkDois }) {
     <div className={styles["link-container"]}>
       <label className={styles["formLabel"]}>Link gerado:</label>
       <div className={styles["link-box"]}>
-        <input
-          type="text"
-          value={linkDois}
-          readOnly
-          className={styles["link-input"]}
-        />
-        <button className={styles["copy-button"]} onClick={copiarLink}>
+        <span className={styles["link-input"]}>{linkDois} </span>
+        <button
+          title="Copiar link"
+          className={styles["copy-button"]}
+          onClick={copiarLink}
+        >
           {linkCopiado && (
             <p className={styles["link-copiado"]}>Link copiado!</p>
           )}
-          <Clipboard />
+          <Copy />
         </button>
       </div>
 
