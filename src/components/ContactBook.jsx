@@ -1,44 +1,45 @@
-import { useState } from 'react';
-import { Users, Plus } from 'lucide-react';
-import ContactItem from './ContactItem';
-import ContactForm from './ContactForm';
-import './ContactBook.css';
+import { useState } from "react";
+import { Users, Plus } from "lucide-react";
+import ContactItem from "./ContactItem";
+import ContactForm from "./ContactForm";
+import "./ContactBook.css";
 
 const ContactBook = () => {
   const [contacts, setContacts] = useState([
-    { id: 1, name: 'João', phone: '44912341234' },
-    { id: 2, name: 'Maria', phone: '44988881234' }
+    { id: 1, name: "João", phone: "44912341234" },
+    { id: 2, name: "Maria", phone: "44988881234" },
   ]);
-  
-  const [newContact, setNewContact] = useState({ name: '', phone: '' });
+
+  const [newContact, setNewContact] = useState({ name: "", phone: "" });
   const [editingContact, setEditingContact] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
   const handleSaveContact = () => {
     if (!newContact.name || !newContact.phone) return;
     if (newContact.phone.length < 11) {
-      alert("Insira 11 números")
-      return
-      ;
+      alert("Insira 11 números");
+      return;
     }
-    
+
     if (editingContact) {
-      setContacts(prev => prev.map(contact => 
-        contact.id === editingContact.id 
-          ? { ...editingContact, ...newContact }
-          : contact
-      ));
+      setContacts((prev) =>
+        prev.map((contact) =>
+          contact.id === editingContact.id
+            ? { ...editingContact, ...newContact }
+            : contact
+        )
+      );
       setEditingContact(null);
     } else {
       const contact = {
         id: Date.now(),
         name: newContact.name,
-        phone: newContact.phone
+        phone: newContact.phone,
       };
-      setContacts(prev => [...prev, contact]);
+      setContacts((prev) => [...prev, contact]);
     }
-    
-    setNewContact({ name: '', phone: '' });
+
+    setNewContact({ name: "", phone: "" });
     setShowForm(false);
   };
 
@@ -49,17 +50,17 @@ const ContactBook = () => {
   };
 
   const handleDeleteContact = (id) => {
-    setContacts(prev => prev.filter(contact => contact.id !== id));
+    setContacts((prev) => prev.filter((contact) => contact.id !== id));
   };
 
   const handleMessageContact = (contact) => {
-    const cleanPhone = contact.phone.replace(/\D/g, '');
+    const cleanPhone = contact.phone.replace(/\D/g, "");
     const link = `https://wa.me/55${cleanPhone}`;
-    window.open(link, '_blank');
+    window.open(link, "_blank");
   };
 
   const cancelEdit = () => {
-    setNewContact({ name: '', phone: '' });
+    setNewContact({ name: "", phone: "" });
     setEditingContact(null);
     setShowForm(false);
   };
@@ -71,10 +72,7 @@ const ContactBook = () => {
           <Users className="header-icon" />
           <h2>Agenda de Contatos</h2>
         </div>
-        <button
-          onClick={() => setShowForm(!showForm)}
-          className="add-button"
-        >
+        <button onClick={() => setShowForm(!showForm)} className="add-button">
           <Plus className="add-icon" />
           Adicionar
         </button>
@@ -93,7 +91,7 @@ const ContactBook = () => {
       <div className="contacts-section">
         <p className="contacts-count">Seus Contatos ({contacts.length})</p>
         <div className="contacts-list">
-          {contacts.map(contact => (
+          {contacts.map((contact) => (
             <ContactItem
               key={contact.id}
               contact={contact}
