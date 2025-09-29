@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import LinkGenerator from "./components/LinkGenerator";
 import ContactBook from "./components/ContactBook";
 import { useState } from "react";
+import ChatBot from "./components/Teste";
 // import { supabase } from "./supabaseClient";
 import "./App.css";
 
@@ -41,6 +42,7 @@ const App = () => {
           <button onClick={consultaTarefas}>OK</button> */}
         </footer>
       </div>
+      <ChatBot />
     </div>
   );
 };
