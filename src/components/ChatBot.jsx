@@ -1,5 +1,5 @@
 import { useState } from "react";
-import supabase from "./supabaseClient"; // Importa o cliente do Supabase
+
 
 export default function ChatBot() {
   const [input, setInput] = useState(""); // Estado para a mensagem do usuário
