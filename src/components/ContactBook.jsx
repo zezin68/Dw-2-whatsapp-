@@ -3,8 +3,10 @@ import { Users, Plus } from "lucide-react";
 import ContactItem from "./ContactItem";
 import ContactForm from "./ContactForm";
 import "./ContactBook.css";
+import { useContatos } from "../Context";
 
 const ContactBook = () => {
+  const [contatos, setContatos] = useContatos();
   const [contacts, setContacts] = useState([
     { id: 1, name: "João", phone: "44912341234" },
     { id: 2, name: "Maria", phone: "44988881234" },
@@ -89,9 +91,9 @@ const ContactBook = () => {
       )}
 
       <div className="contacts-section">
-        <p className="contacts-count">Seus Contatos ({contacts.length})</p>
+        <p className="contacts-count">Seus Contatos ({contatos.length})</p>
         <div className="contacts-list">
-          {contacts.map((contact) => (
+          {contatos.map((contact) => (
             <ContactItem
               key={contact.id}
               contact={contact}
