@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import supabase from "../supabaseCLient";
 
 export default function ChatBot() {
   const [input, setInput] = useState(""); // Estado para a mensagem do usuário
@@ -30,7 +30,7 @@ export default function ChatBot() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": "SCW83TE4E5SGHNCW4J68", // Sua chave da API Scaleway
+          "X-API-Key": "10b257b6-be44-47db-8a7c-47b0e654d070", // Sua chave da API Scaleway
         },
         body: JSON.stringify({
           model: "llama-3.1-8b-instruct",

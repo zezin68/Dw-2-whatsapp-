@@ -6,9 +6,11 @@ import ChatBot from "./components/ChatBot";
 import { useState } from "react";
 import "./App.css";
 
-supabase;
 
 const App = () => {
+
+  console.log(supabase)
+
   async function select(){
     const {data, error} = await supabase.from("Contatos").select("*")
     if (error){
