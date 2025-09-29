@@ -7,12 +7,6 @@ import ChatBot from "./components/Teste";
 import "./App.css";
 
 const App = () => {
-  // const [tarefas, setTarefas] = useState([]);
-  // const consultaTarefas = async () => {
-  //   const [data, error] = await supabase.from("tarefas").select("*");
-  //   setTarefas(data);
-  // };
-
   return (
     <div className="app">
       <div className="app-container">
