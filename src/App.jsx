@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import LinkGenerator from "./components/LinkGenerator";
 import ContactBook from "./components/ContactBook";
 import { useState } from "react";
-import ChatBot from "./components/Teste";
+import ChatBot from "./components/ChatBot";
 // import { supabase } from "./supabaseClient";
 import "./App.css";
 
