@@ -38,7 +38,9 @@ export function ContatosProvider({ children }) {
       .select();
     if (error) console.error(error);
     else {
-      setContatos((prev) => prev.map((dado) => (dado.id === id ? data[0] : p)));
+      setContatos((prev) =>
+        prev.map((dado) => (dado.id === id ? data[0] : dado))
+      );
       console.log("Contato atualizado: ", data);
     }
   }

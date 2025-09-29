@@ -6,11 +6,7 @@ import "./ContactBook.css";
 import { useContatos } from "../Context";
 
 const ContactBook = () => {
-  const [contatos, setContatos] = useContatos();
-  const [contacts, setContacts] = useState([
-    { id: 1, name: "João", phone: "44912341234" },
-    { id: 2, name: "Maria", phone: "44988881234" },
-  ]);
+  const { contatos, setContatos } = useContatos();
 
   const [newContact, setNewContact] = useState({ name: "", phone: "" });
   const [editingContact, setEditingContact] = useState(null);
@@ -24,7 +20,7 @@ const ContactBook = () => {
     }
 
     if (editingContact) {
-      setContacts((prev) =>
+      setContatos((prev) =>
         prev.map((contact) =>
           contact.id === editingContact.id
             ? { ...editingContact, ...newContact }
@@ -38,7 +34,7 @@ const ContactBook = () => {
         name: newContact.name,
         phone: newContact.phone,
       };
-      setContacts((prev) => [...prev, contact]);
+      setContatos((prev) => [...prev, contact]);
     }
 
     setNewContact({ name: "", phone: "" });
@@ -52,7 +48,7 @@ const ContactBook = () => {
   };
 
   const handleDeleteContact = (id) => {
-    setContacts((prev) => prev.filter((contact) => contact.id !== id));
+    setContatos((prev) => prev.filter((contact) => contact.id !== id));
   };
 
   const handleMessageContact = (contact) => {
@@ -91,9 +87,9 @@ const ContactBook = () => {
       )}
 
       <div className="contacts-section">
-        <p className="contacts-count">Seus Contatos ({contatos.length})</p>
+        <p className="contacts-count">Seus Contatos </p>
         <div className="contacts-list">
-          {contatos.map((contact) => (
+          {/* {contatos.map((contact) => (
             <ContactItem
               key={contact.id}
               contact={contact}
@@ -101,7 +97,7 @@ const ContactBook = () => {
               onDelete={handleDeleteContact}
               onMessage={handleMessageContact}
             />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
