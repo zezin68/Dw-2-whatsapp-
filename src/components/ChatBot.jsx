@@ -30,7 +30,7 @@ export default function ChatBot() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": "10b257b6-be44-47db-8a7c-47b0e654d070", // Sua chave da API Scaleway
+          "Authorization": `Bearer 10b257b6-be44-47db-8a7c-47b0e654d070`, // Cabeçalho de autenticação correto
         },
         body: JSON.stringify({
           model: "llama-3.1-8b-instruct",
