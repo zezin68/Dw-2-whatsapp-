@@ -2,7 +2,6 @@ import Header from "./components/Header";
 import LinkGenerator from "./components/LinkGenerator";
 import ContactBook from "./components/ContactBook";
 import { useState } from "react";
-// import { supabase } from "./supabaseClient";
 import "./App.css";
 
 supabase;
