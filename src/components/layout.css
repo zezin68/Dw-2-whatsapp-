@@ -1,0 +1,48 @@
+/* Cabeçalho e rodapé */
+.header, .footer {
+  background-color: #222;
+  color: white;
+  padding: 15px;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.main {
+  padding: 20px;
+}
+/* Cabeçalho e rodapé */
+.header, .footer {
+  background-color: #222;
+  color: white;
+  padding: 15px;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.main {
+  padding: 20px;
+}
