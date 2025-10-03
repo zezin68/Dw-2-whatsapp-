@@ -12,7 +12,7 @@ export default function ChatBot() {
 
     //  Salva a mensagem do usuário no Supabase
     const { data: userMessage, error: userMessageError } = await supabase
-      .from("messages")
+      .from("messages") // Tabela onde as mensagens serão armazenadas
       .insert([{ content: input }])
       .single();
 
@@ -23,35 +23,32 @@ export default function ChatBot() {
     }
 
     try {
-      //  Chama a API do Groq
-      const res = await fetch(
-        "https://api.groq.com/openai/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.IA_KEY}`,
-          },
-          body: JSON.stringify({
-            model: "llama-3.1-70b-versatile", // ou outro modelo
-            messages: [{ role: "user", content: input }],
-            temperature: 0.7,
-            max_tokens: 150,
-          }),
-        }
-      );
+      // Faz a requisição para a API da Scaleway
+      const res = await fetch("https://api.scaleway.ai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.IA_KEY}`, // Cabeçalho de autenticação correto
+        },
+        body: JSON.stringify({
+          model: "llama-3.1-8b-instruct",
+          messages: [{ role: "user", content: input }],
+          temperature: 0.7,
+          max_tokens: 150,
+        }),
+      });
 
       const data = await res.json();
 
       if (data.choices && data.choices.length > 0) {
         const botResponse = data.choices[0].message.content;
-        setResponse(botResponse);
+        setResponse(botResponse); // Exibe a resposta da API
 
         //  Salva a resposta no Supabase
         const { error: responseMessageError } = await supabase
           .from("messages")
-          .update({ response: botResponse })
-          .eq("id", userMessage.id);
+          .update([{ response: botResponse }])
+          .eq("id", userMessage.id); // Usa o ID da mensagem para atualizar
 
         if (responseMessageError) {
           setResponse("Erro ao salvar a resposta.");
