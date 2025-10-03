@@ -5,8 +5,8 @@ const ContactItem = ({ contact, onEdit, onDelete, onMessage }) => {
   return (
     <div className="contact-item">
       <div className="contact-info">
-        <h3 className="contact-name">{contact.name}</h3>
-        <p className="contact-phone">{contact.phone}</p>
+        <h3 className="contact-name">{contact.nome}</h3>
+        <p className="contact-phone">{contact.telefone}</p>
       </div>
       <div className="contact-actions">
         <button

@@ -7,7 +7,7 @@ export function ContatosProvider({ children }) {
   const [contatos, setContatos] = useState([]);
 
   async function carregarContatos() {
-    const { data, error } = supabase
+    const { data, error } = await supabase
       .from("Contatos")
       .select("*")
       .order("nome", { ascending: true });
@@ -19,7 +19,7 @@ export function ContatosProvider({ children }) {
   }
 
   async function adicionarContatos(novoContato) {
-    const { data, error } = supabase
+    const { data, error } = await supabase
       .from("Contatos")
       .insert([novoContato])
       .select("*");
@@ -31,7 +31,7 @@ export function ContatosProvider({ children }) {
   }
 
   async function atualizarContatos(id, contatoAtualizado) {
-    const { data, error } = supabase
+    const { data, error } = await supabase
       .from("Contatos")
       .update(contatoAtualizado)
       .eq("id", id)
@@ -46,7 +46,7 @@ export function ContatosProvider({ children }) {
   }
 
   async function removerContatos(id) {
-    const { data, error } = supabase
+    const { data, error } = await supabase
       .from("Contatos")
       .delete()
       .eq("id", id)

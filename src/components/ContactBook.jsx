@@ -7,12 +7,17 @@ import { useContatos } from "../Context";
 
 const ContactBook = () => {
   const { contatos, setContatos } = useContatos();
+  const { atualizarContatos } = useContatos();
 
-  const [newContact, setNewContact] = useState({ name: "", phone: "" });
+  const [newContact, setNewContact] = useState({
+    nome: "",
+    telefone: "",
+    id: "",
+  });
   const [editingContact, setEditingContact] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
-  const handleSaveContact = () => {
+  const handleSaveContact = async () => {
     if (!newContact.name || !newContact.phone) return;
     if (newContact.phone.length < 11) {
       alert("Insira 11 números");
@@ -20,13 +25,10 @@ const ContactBook = () => {
     }
 
     if (editingContact) {
-      setContatos((prev) =>
-        prev.map((contact) =>
-          contact.id === editingContact.id
-            ? { ...editingContact, ...newContact }
-            : contact
-        )
-      );
+      await atualizarContatos(contact.id, {
+        nome: newContact.name,
+        telefone: newContact.phone,
+      });
       setEditingContact(null);
     } else {
       const contact = {
@@ -41,8 +43,12 @@ const ContactBook = () => {
     setShowForm(false);
   };
 
-  const handleEditContact = (contact) => {
-    setNewContact({ name: contact.name, phone: contact.phone });
+  const handleEditContact = async (contact) => {
+    setNewContact({
+      nome: contact.nome,
+      telefone: contact.telefone,
+      id: contact.id,
+    });
     setEditingContact(contact);
     setShowForm(true);
   };
@@ -52,13 +58,13 @@ const ContactBook = () => {
   };
 
   const handleMessageContact = (contact) => {
-    const cleanPhone = contact.phone.replace(/\D/g, "");
+    const cleanPhone = contact.telefone.replace(/\D/g, "");
     const link = `https://wa.me/55${cleanPhone}`;
     window.open(link, "_blank");
   };
 
   const cancelEdit = () => {
-    setNewContact({ name: "", phone: "" });
+    setNewContact({ nome: "", telefone: "", id: "" });
     setEditingContact(null);
     setShowForm(false);
   };
@@ -89,7 +95,7 @@ const ContactBook = () => {
       <div className="contacts-section">
         <p className="contacts-count">Seus Contatos </p>
         <div className="contacts-list">
-          {/* {contatos.map((contact) => (
+          {contatos.map((contact) => (
             <ContactItem
               key={contact.id}
               contact={contact}
@@ -97,7 +103,7 @@ const ContactBook = () => {
               onDelete={handleDeleteContact}
               onMessage={handleMessageContact}
             />
-          ))} */}
+          ))}
         </div>
       </div>
     </div>
