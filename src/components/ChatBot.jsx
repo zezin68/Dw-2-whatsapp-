@@ -1,22 +1,20 @@
 import { useState } from "react";
-import supabase from "../supabaseCLient";
+import supabase from "../supabaseClient";
 
 export default function ChatBot() {
-  const [input, setInput] = useState(""); // Estado para a mensagem do usuário
-  const [response, setResponse] = useState(""); // Estado para a resposta da API
-  const [loading, setLoading] = useState(false); // Estado para controlar o carregamento
+  const [input, setInput] = useState("");
+  const [response, setResponse] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // Função para enviar a mensagem e receber a resposta
   const handleSend = async () => {
-    if (!input.trim()) return; // Impede envio de mensagens vazias
+    if (!input.trim()) return;
+    setLoading(true);
 
-    setLoading(true); // Ativa o carregamento
-
-    // Salva a mensagem do usuário no Supabase
+    //  Salva a mensagem do usuário no Supabase
     const { data: userMessage, error: userMessageError } = await supabase
-      .from('messages') // Tabela onde as mensagens serão armazenadas
+      .from("messages")
       .insert([{ content: input }])
-      .single(); // Garante que apenas uma linha seja retornada
+      .single();
 
     if (userMessageError) {
       setResponse("Erro ao salvar a mensagem.");
@@ -25,15 +23,16 @@ export default function ChatBot() {
     }
 
     try {
-      // Faz a requisição para a API da Scaleway
-      const res = await fetch("https://api.scaleway.ai/v1/chat/completions", {
+      //  Chama a API do Groq
+      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer 10b257b6-be44-47db-8a7c-47b0e654d070`, // Cabeçalho de autenticação correto
+          Authorization: `Bearer ${import.meta.env.IA_KEY}`,
+          
         },
         body: JSON.stringify({
-          model: "llama-3.1-8b-instruct",
+          model: "llama-3.1-70b-versatile",  // ou outro modelo
           messages: [{ role: "user", content: input }],
           temperature: 0.7,
           max_tokens: 150,
@@ -44,13 +43,13 @@ export default function ChatBot() {
 
       if (data.choices && data.choices.length > 0) {
         const botResponse = data.choices[0].message.content;
-        setResponse(botResponse); // Exibe a resposta da API
+        setResponse(botResponse);
 
-        // Salva a resposta no Supabase, associada à mensagem do usuário
+        //  Salva a resposta no Supabase
         const { error: responseMessageError } = await supabase
-          .from('messages')
-          .update([{ response: botResponse }])
-          .eq('id', userMessage.id); // Usa o ID da mensagem para atualizar
+          .from("messages")
+          .update({ response: botResponse })
+          .eq("id", userMessage.id);
 
         if (responseMessageError) {
           setResponse("Erro ao salvar a resposta.");
@@ -61,7 +60,7 @@ export default function ChatBot() {
     } catch (error) {
       setResponse(`Erro: ${error.message}`);
     } finally {
-      setLoading(false); // Finaliza o carregamento
+      setLoading(false);
     }
   };
 
@@ -69,7 +68,6 @@ export default function ChatBot() {
     <div style={{ maxWidth: 600, margin: "auto", padding: 20 }}>
       <h2>ChatBot</h2>
 
-      {/* Campo de entrada */}
       <textarea
         rows={4}
         style={{ width: "100%" }}
@@ -78,16 +76,14 @@ export default function ChatBot() {
         placeholder="Digite sua pergunta aqui"
       />
 
-      {/* Botão para enviar a mensagem */}
       <button
         onClick={handleSend}
         style={{ marginTop: 10 }}
-        disabled={loading} // Desabilita o botão enquanto está carregando
+        disabled={loading}
       >
         {loading ? "Carregando..." : "Enviar"}
       </button>
 
-      {/* Exibe a resposta da API */}
       <pre style={{ marginTop: 20, background: "#eee", padding: 10 }}>
         {response}
       </pre>
