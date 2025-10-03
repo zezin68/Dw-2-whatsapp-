@@ -28,7 +28,11 @@ export default function ChatBot() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+<<<<<<< Updated upstream
           Authorization: `Bearer ${import.meta.env.IA_KEY}`, // Cabeçalho de autenticação correto
+=======
+          Authorization: `Bearer 10b257b6-be44-47db-8a7c-47b0e654d070`, // Cabeçalho de autenticação correto
+>>>>>>> Stashed changes
         },
         body: JSON.stringify({
           model: "llama-3.1-8b-instruct",
@@ -42,7 +46,7 @@ export default function ChatBot() {
 
       if (data.choices && data.choices.length > 0) {
         const botResponse = data.choices[0].message.content;
-        setResponse(botResponse); // Exibe a resposta da API
+        setResponse(botResponse);
 
         //  Salva a resposta no Supabase
         const { error: responseMessageError } = await supabase
