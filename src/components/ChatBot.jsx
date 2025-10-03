@@ -24,20 +24,22 @@ export default function ChatBot() {
 
     try {
       //  Chama a API do Groq
-      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.IA_KEY}`,
-          
-        },
-        body: JSON.stringify({
-          model: "llama-3.1-70b-versatile",  // ou outro modelo
-          messages: [{ role: "user", content: input }],
-          temperature: 0.7,
-          max_tokens: 150,
-        }),
-      });
+      const res = await fetch(
+        "https://api.groq.com/openai/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.IA_KEY}`,
+          },
+          body: JSON.stringify({
+            model: "llama-3.1-70b-versatile", // ou outro modelo
+            messages: [{ role: "user", content: input }],
+            temperature: 0.7,
+            max_tokens: 150,
+          }),
+        }
+      );
 
       const data = await res.json();
 
@@ -76,11 +78,7 @@ export default function ChatBot() {
         placeholder="Digite sua pergunta aqui"
       />
 
-      <button
-        onClick={handleSend}
-        style={{ marginTop: 10 }}
-        disabled={loading}
-      >
+      <button onClick={handleSend} style={{ marginTop: 10 }} disabled={loading}>
         {loading ? "Carregando..." : "Enviar"}
       </button>
 
