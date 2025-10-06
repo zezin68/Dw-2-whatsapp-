@@ -1,5 +1,5 @@
 import { Trash2 } from "lucide-react";
-import "./ContactItem.css";
+import "./ContactItem.module.css";
 
 const ContactItem = ({ contact, onEdit, onDelete, onMessage }) => {
   return (

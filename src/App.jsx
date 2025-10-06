@@ -4,7 +4,7 @@ import ContactBook from "./components/ContactBook";
 import ChatBot from "./components/ChatBot";
 import { useState } from "react";
 import { ContatosProvider } from "./Context";
-import "./App.css";
+import "./App.module.css";
 
 const App = () => {
   return (

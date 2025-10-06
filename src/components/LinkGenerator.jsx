@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import CopyLink from "./CopyLink";
-import "./LinkGenerator.css";
+import "./LinkGenerator.module.css";
 
 const LinkGenerator = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
