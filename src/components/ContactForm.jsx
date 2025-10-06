@@ -14,7 +14,7 @@ const ContactForm = ({
   
     // Limitar a 11 números
     if (onlyNumbers.length <= 11) {
-      setNewContact(prev => ({ ...prev, phone: onlyNumbers }))
+      setNewContact(prev => ({ ...prev, telefone: onlyNumbers }))
     }
   };
   return (
@@ -27,8 +27,8 @@ const ContactForm = ({
           <label className="input-label">Nome</label>
           <input
             type="text"
-            value={newContact.name}
-            onChange={(e) => setNewContact(prev => ({ ...prev, name: e.target.value }))}
+            value={newContact.nome}
+            onChange={(e) => setNewContact(prev => ({ ...prev, nome: e.target.value }))}
             placeholder="Nome do contato"
             className="form-input"
           />
@@ -37,7 +37,7 @@ const ContactForm = ({
           <label className="input-label">Número</label>
           <input
             type="text"
-            value={newContact.phone}
+            value={newContact.telefone}
             onChange={(e) => handleChange(e) }
             placeholder="Número"
             className="form-input"

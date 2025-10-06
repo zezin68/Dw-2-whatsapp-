@@ -16,30 +16,31 @@ const ContactBook = () => {
   });
   const [editingContact, setEditingContact] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [showFormeAdd, setShowFormAdd] = useState(false);
 
   const handleSaveContact = async () => {
-    if (!newContact.name || !newContact.phone) return;
-    if (newContact.phone.length < 11) {
+    if (!newContact.nome || !newContact.telefone) return;
+    if (newContact.telefone.length < 11) {
       alert("Insira 11 números");
       return;
     }
 
     if (editingContact) {
       await atualizarContatos(contact.id, {
-        nome: newContact.name,
-        telefone: newContact.phone,
+        nome: newContact.nome,
+        telefone: newContact.telefone,
       });
       setEditingContact(null);
     } else {
       const contact = {
         id: Date.now(),
-        name: newContact.name,
-        phone: newContact.phone,
+        nome: newContact.nome,
+        telefone: newContact.telefone,
       };
       setContatos((prev) => [...prev, contact]);
     }
 
-    setNewContact({ name: "", phone: "" });
+    setNewContact({ nome: "", telefone: "" });
     setShowForm(false);
   };
 
@@ -76,7 +77,7 @@ const ContactBook = () => {
           <Users className="header-icon" />
           <h2>Agenda de Contatos</h2>
         </div>
-        <button onClick={() => setShowForm(!showForm)} className="add-button">
+        <button onClick={() => setShowFormAdd(!showFormAdd)} className="add-button">
           <Plus className="add-icon" />
           Adicionar
         </button>
