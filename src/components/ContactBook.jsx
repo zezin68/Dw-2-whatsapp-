@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Users, Plus } from "lucide-react";
 import ContactItem from "./ContactItem";
 import ContactForm from "./ContactForm";
-import "./ContactBook.module.css";
+import "./ContactBook.css";
 import { useContatos } from "../Context";
 
 const ContactBook = () => {
