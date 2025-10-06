@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Users, Plus } from "lucide-react";
 import ContactItem from "./ContactItem";
 import ContactForm from "./ContactForm";
-import "./ContactBook.css";
+import styles from "./ContactBook.module.css";
 import { useContatos } from "../Context";
 
 const ContactBook = () => {
@@ -71,14 +71,14 @@ const ContactBook = () => {
   };
 
   return (
-    <div className="contact-book">
-      <div className="contact-book-header">
-        <div className="header-title">
-          <Users className="header-icon" />
+    <div className={styles["contactBook"]}>
+      <div className={styles["contactBookHeader"]}>
+        <div className={styles["headerTitle"]}>
+          <Users className={styles["headerIcon"]} />
           <h2>Agenda de Contatos</h2>
         </div>
-        <button onClick={() => setShowFormAdd(!showFormAdd)} className="add-button">
-          <Plus className="add-icon" />
+        <button onClick={() => setShowFormAdd(!showFormAdd)} className={styles["addButton"]}>
+          <Plus className={styles["addIcon"]} />
           Adicionar
         </button>
       </div>
@@ -93,9 +93,9 @@ const ContactBook = () => {
         />
       )}
 
-      <div className="contacts-section">
-        <p className="contacts-count">Seus Contatos </p>
-        <div className="contacts-list">
+      <div className={styles["contactsSection"]}>
+        <p className={styles["contactsCount"]}>Seus Contatos </p>
+        <div className={styles["contactsList"]}>
           {contatos.map((contact) => (
             <ContactItem
               key={contact.id}

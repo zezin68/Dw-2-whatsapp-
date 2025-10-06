@@ -1,0 +1,109 @@
+:root {
+  /*Cores principais */
+  --color-bg: #ffffff;
+  --color-primary: #10b981;
+  --color-primary-hover: #059669;
+  --color-text-title: #1f2937;
+  --color-text-secondary: #6b7280;
+
+  /*Layout e bordas */
+  --border-radius: 1rem;
+  --button-radius: 0.5rem;
+  --card-padding: 2rem;
+
+  /* 🌫️ Sombras */
+  --shadow-base: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Caixa */
+.contactBook {
+  background: var(--color-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-base);
+  padding: var(--card-padding);
+}
+
+/* Parte de cima da caixa */
+.contactBookHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.headerIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-primary);
+}
+
+.contactBook h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-title);
+  margin: 0;
+}
+
+/*Botão de add*/
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--button-radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.addButton:hover {
+  background: var(--color-primary-hover);
+}
+
+.addIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/*Lista dos contatos*/
+.contactsSection {
+  margin-top: 1rem;
+}
+
+.contactsCount {
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.contactsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/*Responsividade*/
+@media (max-width: 640px) {
+  .contactBook {
+    padding: 1.5rem;
+  }
+
+  .contactBookHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .addButton {
+    justify-content: center;
+  }
+}
