@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import LinkGenerator from "./components/LinkGenerator";
 import ContactBook from "./components/ContactBook";
-import ChatBot from "./components/ChatBot";
+import Chatbot from "./components/ChatBot";
 import { useState } from "react";
 import { ContatosProvider } from "./Context";
 import "./App.css";
@@ -34,7 +34,7 @@ const App = () => {
             </p>
           </footer>
         </div>
-        <ChatBot />
+        <Chatbot />
       </div>
     </ContatosProvider>
   );

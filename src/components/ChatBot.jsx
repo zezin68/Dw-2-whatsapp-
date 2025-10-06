@@ -1,87 +1,68 @@
-import { useState } from "react";
-import supabase from "../supabaseClient";
+import React, { useState } from 'react';
 
-export default function ChatBot() {
-  const [input, setInput] = useState("");
-  const [response, setResponse] = useState("");
+const Chatbot = () => {
+  const [prompt, setPrompt] = useState('');
+  const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
+  // Função para enviar o prompt ao backend
   const handleSend = async () => {
-    if (!input.trim()) return;
+    if (!prompt.trim()) return;
     setLoading(true);
-
-    //  Salva a mensagem do usuário no Supabase
-    const { data: userMessage, error: userMessageError } = await supabase
-      .from("messages") // Tabela onde as mensagens serão armazenadas
-      .insert([{ content: input }])
-      .single();
-
-    if (userMessageError) {
-      setResponse("Erro ao salvar a mensagem.");
-      setLoading(false);
-      return;
-    }
+    setError(null);
 
     try {
-      // Faz a requisição para a API da Scaleway
-      const res = await fetch("https://api.scaleway.ai/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.IA_KEY}`, // Cabeçalho de autenticação correto
-        },
-        body: JSON.stringify({
-          model: "llama-3.1-8b-instruct",
-          messages: [{ role: "user", content: input }],
-          temperature: 0.7,
-          max_tokens: 150,
-        }),
+      const res = await fetch('http://localhost:5173/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
       });
-
+      
       const data = await res.json();
-
-      if (data.choices && data.choices.length > 0) {
-        const botResponse = data.choices[0].message.content;
-        setResponse(botResponse); // Exibe a resposta da API
-
-        //  Salva a resposta no Supabase
-        const { error: responseMessageError } = await supabase
-          .from("messages")
-          .update([{ response: botResponse }])
-          .eq("id", userMessage.id); // Usa o ID da mensagem para atualizar
-
-        if (responseMessageError) {
-          setResponse("Erro ao salvar a resposta.");
-        }
-      } else {
-        setResponse("Erro na resposta.");
-      }
-    } catch (error) {
-      setResponse(`Erro: ${error.message}`);
+      
+      if (!res.ok) throw new Error(data.error || 'Erro desconhecido');
+      
+      setAnswer(data.answer);
+    } catch (e) {
+      setError(e.message);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: "auto", padding: 20 }}>
-      <h2>ChatBot</h2>
-
+    <div style={{ marginTop: '2rem' }}>
+      <h3>ChatBot</h3>
       <textarea
-        rows={4}
-        style={{ width: "100%" }}
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Digite sua pergunta aqui"
+        rows={3}
+        placeholder="Digite sua pergunta..."
+        value={prompt}
+        onChange={e => setPrompt(e.target.value)}
+        style={{ width: '100%', fontSize: '1rem', padding: '.5rem' }}
       />
-
-      <button onClick={handleSend} style={{ marginTop: 10 }} disabled={loading}>
-        {loading ? "Carregando..." : "Enviar"}
+      <button
+        onClick={handleSend}
+        disabled={loading || !prompt.trim()}
+        style={{ padding: '.5rem 1rem', marginTop: '.5rem' }}
+      >
+        {loading ? 'Carregando...' : 'Enviar'}
       </button>
 
-      <pre style={{ marginTop: 20, background: "#eee", padding: 10 }}>
-        {response}
-      </pre>
+      {error && (
+        <div style={{ color: 'red', marginTop: '1rem' }}>
+          <strong>Erro:</strong> {error}
+        </div>
+      )}
+
+      {answer && (
+        <div style={{ marginTop: '1rem', background: '#f0f0f0', padding: '1rem' }}>
+          <strong>Resposta:</strong>
+          <p>{answer}</p>
+        </div>
+      )}
     </div>
   );
-}
+};
+
+export default Chatbot;
