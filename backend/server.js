@@ -1,15 +1,24 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
 import Groq from 'groq-sdk';
 
+dotenv.config({ path: '../.env' });
+
 const app = express();
-const port = 5173;
+const port = 5000;
 
-const groq = new Groq({ apiKey: import.meta.env.GROQ_API_KEY });
+// ✅ Configure o CORS corretamente
+app.use(cors({
+  origin: 'http://localhost:5174', // 👈 permite requisições desta origem
+  methods: ['GET', 'POST'],        // 👈 permite esses métodos
+  allowedHeaders: ['Content-Type'] // 👈 permite estes headers
+}));
 
-// Middleware para processar o corpo da requisição como JSON
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
 app.use(express.json());
 
-// Rota para processar a requisição do frontend
 app.post('/chat', async (req, res) => {
   const { prompt } = req.body;
 
@@ -34,7 +43,6 @@ app.post('/chat', async (req, res) => {
   }
 });
 
-// Iniciando o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
