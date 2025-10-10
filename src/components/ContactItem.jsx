@@ -1,32 +1,32 @@
 import { Trash2 } from "lucide-react";
-import "./ContactItem.css";
+import "./ContactItem.module.css";
 
 const ContactItem = ({ contact, onEdit, onDelete, onMessage }) => {
   return (
-    <div className="contact-item">
-      <div className="contact-info">
-        <h3 className="contact-name">{contact.nome}</h3>
-        <p className="contact-phone">{contact.telefone}</p>
+    <div className={["contactItem"]}>
+      <div className={["contactInfo"]}>
+        <h3 className={["contactName"]}>{contact.nome}</h3>
+      <p className={["contactPhone"]}>{contact.telefone}</p>
       </div>
-      <div className="contact-actions">
+      <div className={["contactActions"]}>
         <button
           onClick={() => onMessage(contact)}
-          className="action-button message-button"
+          className={["actionButton messageButton"]}
         >
           Mensagem
         </button>
         <button
           onClick={() => onEdit(contact)}
-          className="action-button edit-button"
+          className={["actionButton editButton"]}
         >
           Editar
         </button>
         <button
           onClick={() => onDelete(contact.id)}
-          className="action-button delete-button"
+          className={["actionButton deleteButton"]}
           title="Excluir"
         >
-          <Trash2 className="delete-icon" />
+          <Trash2 className={["deleteIcon"]} />
         </button>
       </div>
     </div>

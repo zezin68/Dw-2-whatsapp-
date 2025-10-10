@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Users, Plus } from "lucide-react";
 import ContactItem from "./ContactItem";
 import ContactForm from "./ContactForm";
+import ContactFormAdd from "./ContactFormAdd";
 import styles from "./ContactBook.module.css";
 import { useContatos } from "../Context";
 
@@ -16,7 +17,7 @@ const ContactBook = () => {
   });
   const [editingContact, setEditingContact] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const [showFormeAdd, setShowFormAdd] = useState(false);
+  const [showFormAdd, setShowFormAdd] = useState(false);
 
   const handleSaveContact = async () => {
     if (!newContact.nome || !newContact.telefone) return;
@@ -82,6 +83,8 @@ const ContactBook = () => {
           Adicionar
         </button>
       </div>
+
+      {showFormAdd && <ContactFormAdd />}
 
       {showForm && (
         <ContactForm

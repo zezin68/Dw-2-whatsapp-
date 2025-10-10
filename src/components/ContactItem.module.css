@@ -1,0 +1,129 @@
+:root {
+  /*Cores*/
+  --color-bg-item: #f9fafb;
+  --color-bg-hover: #f3f4f6;
+  --color-text-name: #1f2937;
+  --color-text-phone: #6b7280;
+  --color-btn-message: #10b981;
+  --color-btn-message-hover: #059669;
+  --color-btn-edit: #6b7280;
+  --color-btn-edit-hover: #4b5563;
+  --color-btn-delete: #ef4444;
+  --color-btn-delete-hover-bg: #fef2f2;
+
+  /*Espaçamento */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+
+  /*Tipografia */
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-weight-medium: 500;
+
+  /*Layout */
+  --border-radius: 0.5rem;
+  --transition: background-color 0.2s;
+}
+
+/*Itens de Contato*/
+.contactItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md);
+  background: var(--color-bg-item);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.contactItem:hover {
+  background: var(--color-bg-hover);
+}
+
+.contactInfo {
+  flex: 1;
+}
+
+.contactName {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-name);
+  margin: 0 0 var(--space-xs) 0;
+  font-size: var(--font-size-base);
+}
+
+.contactPhone {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-phone);
+  margin: 0;
+}
+
+.contactActions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.actionButton {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: var(--font-weight-medium);
+}
+
+/* === Botões === */
+.messageButton {
+  background: var(--color-btn-message);
+  color: white;
+}
+
+.messageButton:hover {
+  background: var(--color-btn-message-hover);
+}
+
+.editButton {
+  background: var(--color-btn-edit);
+  color: white;
+}
+
+.editButton:hover {
+  background: var(--color-btn-edit-hover);
+}
+
+.deleteButton {
+  background: transparent;
+  color: var(--color-btn-delete);
+  padding: var(--space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteButton:hover {
+  background: var(--color-btn-delete-hover-bg);
+}
+
+.deleteIcon {
+  width: var(--font-size-base);
+  height: var(--font-size-base);
+}
+
+/*Responsividade */
+@media (max-width: 640px) {
+  .contactItem {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-md);
+  }
+
+  .contactActions {
+    justify-content: center;
+  }
+
+  .actionButton {
+    flex: 1;
+  }
+}
