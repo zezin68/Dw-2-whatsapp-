@@ -1,0 +1,69 @@
+:root {
+  /*Cores */
+  --color-icon: #10b981;
+  --color-text-title: #1f2937;
+  --color-text-description: #6b7280;
+
+  /*Espaçamento */
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 3rem;
+
+  /*Tipografia */
+  --font-size-h1: 2.25rem;
+  --font-size-h1-mobile: 1.875rem;
+  --font-size-description: 1.125rem;
+  --font-size-description-mobile: 1rem;
+  --font-weight-bold: 700;
+
+  /*Layout */
+  --max-width-text: 42rem;
+  --transition: all 0.2s;
+}
+
+/*Cabeçalho*/
+.header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.headerIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-icon);
+}
+
+.header h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-title);
+  margin: 0;
+}
+
+.headerDescription {
+  color: var(--color-text-description);
+  font-size: var(--font-size-description);
+  max-width: var(--max-width-text);
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/*Responsividade */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: var(--font-size-h1-mobile);
+  }
+
+  .headerDescription {
+    font-size: var(--font-size-description-mobile);
+    padding: 0 var(--space-md);
+  }
+}

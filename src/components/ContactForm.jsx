@@ -1,4 +1,4 @@
-import './ContactForm.module.css';
+import styles from './ContactForm.module.css';
 
 const ContactForm = ({ 
   newContact, 

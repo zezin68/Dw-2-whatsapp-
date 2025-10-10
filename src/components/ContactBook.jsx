@@ -71,6 +71,9 @@ const ContactBook = () => {
     setShowForm(false);
   };
 
+  const cancelSave = () => {
+    setShowFormAdd(false)
+  }
   return (
     <div className={styles["contactBook"]}>
       <div className={styles["contactBookHeader"]}>
@@ -84,7 +87,7 @@ const ContactBook = () => {
         </button>
       </div>
 
-      {showFormAdd && <ContactFormAdd />}
+      {showFormAdd && <ContactFormAdd onSave={handleSaveContact} onCancel={cancelSave}/>}
 
       {showForm && (
         <ContactForm
