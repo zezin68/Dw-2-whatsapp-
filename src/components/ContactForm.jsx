@@ -1,4 +1,4 @@
-import './ContactForm.css';
+import './ContactForm.module.css';
 
 const ContactForm = ({ 
   newContact, 
@@ -17,24 +17,23 @@ const ContactForm = ({
       setNewContact(prev => ({ ...prev, telefone: onlyNumbers }))
     }
   };
-  return (
-    <div className="contact-form">
-      <h3 className="form-title">
+  return ( //={styles["contactBook"]}
+    <div className={styles["contactForm"]}>
+      <h3 className={styles["formTitle"]}>
         {editingContact ? 'Editar Contato' : 'Novo Contato'}
       </h3>
-      <div className="form-inputs">
-        <div className="input-group">
-          <label className="input-label">Nome</label>
+      <div className={["formInputs"]}>
+        <div className={["inputGroup"]}>
+          <label className={["inputLabel"]}>Nome</label>
           <input
             type="text"
             value={newContact.nome}
             onChange={(e) => setNewContact(prev => ({ ...prev, nome: e.target.value }))}
             placeholder="Nome do contato"
-            className="form-input"
-          />
+            className={["formInput"]}/>
         </div>
-        <div className="input-group">
-          <label className="input-label">Número</label>
+        <div className={["inputGroup"]}>
+          <label className={["inputLabel"]}>Número</label>
           <input
             type="text"
             value={newContact.telefone}
@@ -44,17 +43,15 @@ const ContactForm = ({
           />
         </div>
       </div>
-      <div className="form-buttons">
+      <div className={["formButtons"]}>
         <button
           onClick={onSave}
-          className="form-button save-button"
-        >
+          className={["formButton saveButton"]}>
           {editingContact ? 'Atualizar' : 'Salvar'}
         </button>
         <button
           onClick={onCancel}
-          className="form-button cancel-button"
-        >
+          className={["form-button cancel-button"]}>
           Cancelar
         </button>
       </div>
