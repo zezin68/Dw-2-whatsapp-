@@ -1,26 +1,28 @@
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
+import dotenv from "dotenv";
 import Groq from "groq-sdk";
 
-dotenv.config(); // lê variáveis do painel Render
+dotenv.config();
 
 const app = express();
 
+// CORS configurado para localhost e frontend deployado
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173", // dev local
-      "https://seu-frontend.onrender.com", // deploy frontend
-    ],
-    methods: ["GET", "POST"],
+    origin: ["http://localhost:5173", "https://seu-frontend.onrender.com"],
+    methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
+    credentials: true,
   })
 );
 
+app.use(express.json());
+
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-app.use(express.json());
+// Forçar respostas OPTIONS para qualquer rota
+app.options("*", cors());
 
 app.post("/chat", async (req, res) => {
   const { prompt } = req.body;
