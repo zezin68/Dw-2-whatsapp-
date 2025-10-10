@@ -8,12 +8,14 @@ dotenv.config({ path: "../.env" });
 const app = express();
 const port = 5000;
 
-// ✅ Configure o CORS corretamente
 app.use(
   cors({
-    origin: "http://localhost:5173", // 👈 permite requisições desta origem
-    methods: ["GET", "POST"], // 👈 permite esses métodos
-    allowedHeaders: ["Content-Type"], // 👈 permite estes headers
+    origin: [
+      "http://localhost:5173", // dev local
+      "https://seu-frontend.onrender.com", // deploy do frontend
+    ],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
   })
 );
 
