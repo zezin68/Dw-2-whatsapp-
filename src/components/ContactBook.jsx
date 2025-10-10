@@ -7,56 +7,47 @@ import styles from "./ContactBook.module.css";
 import { useContatos } from "../Context";
 
 const ContactBook = () => {
-  const { contatos, setContatos } = useContatos();
-  const { atualizarContatos } = useContatos();
+  const { contatos, removerContatos, atualizarContatos } = useContatos();
 
-  const [newContact, setNewContact] = useState({
+  const [contatoEditado, setContatoEditado] = useState({
     nome: "",
     telefone: "",
     id: "",
   });
-  const [editingContact, setEditingContact] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [showFormAdd, setShowFormAdd] = useState(false);
 
   const handleSaveContact = async () => {
-    if (!newContact.nome || !newContact.telefone) return;
-    if (newContact.telefone.length < 11) {
+    if (!contatoEditado.nome || !contatoEditado.telefone) return;
+    if (contatoEditado.telefone.length < 11) {
       alert("Insira 11 números");
       return;
     }
+    const contact = {
+      nome: contatoEditado.nome,
+      telefone: contatoEditado.telefone,
+    };
+    atualizarContatos(Number(contatoEditado.id), contact);
 
-    if (editingContact) {
-      await atualizarContatos(contact.id, {
-        nome: newContact.nome,
-        telefone: newContact.telefone,
-      });
-      setEditingContact(null);
-    } else {
-      const contact = {
-        id: Date.now(),
-        nome: newContact.nome,
-        telefone: newContact.telefone,
-      };
-      setContatos((prev) => [...prev, contact]);
-    }
-
-    setNewContact({ nome: "", telefone: "" });
+    setContatoEditado({ nome: "", telefone: "" });
     setShowForm(false);
   };
 
   const handleEditContact = async (contact) => {
-    setNewContact({
+    setContatoEditado({
       nome: contact.nome,
       telefone: contact.telefone,
       id: contact.id,
     });
-    setEditingContact(contact);
     setShowForm(true);
   };
 
-  const handleDeleteContact = (id) => {
-    setContatos((prev) => prev.filter((contact) => contact.id !== id));
+  const handleDeleteContact = async (id) => {
+    const contatoRemovido = contatos.find((contato) => contato.id === id);
+    await removerContatos(id);
+    alert(
+      `Contato removido com sucesso! Contato removido: ${contatoRemovido.nome}`
+    );
   };
 
   const handleMessageContact = (contact) => {
@@ -66,14 +57,13 @@ const ContactBook = () => {
   };
 
   const cancelEdit = () => {
-    setNewContact({ nome: "", telefone: "", id: "" });
-    setEditingContact(null);
     setShowForm(false);
   };
 
   const cancelSave = () => {
-    setShowFormAdd(false)
-  }
+    setShowFormAdd(false);
+  };
+
   return (
     <div className={styles["contactBook"]}>
       <div className={styles["contactBookHeader"]}>
@@ -81,19 +71,21 @@ const ContactBook = () => {
           <Users className={styles["headerIcon"]} />
           <h2>Agenda de Contatos</h2>
         </div>
-        <button onClick={() => setShowFormAdd(!showFormAdd)} className={styles["addButton"]}>
+        <button
+          onClick={() => setShowFormAdd(!showFormAdd)}
+          className={styles["addButton"]}
+        >
           <Plus className={styles["addIcon"]} />
           Adicionar
         </button>
       </div>
 
-      {showFormAdd && <ContactFormAdd onSave={handleSaveContact} onCancel={cancelSave}/>}
+      {showFormAdd && <ContactFormAdd onCancel={cancelSave} />}
 
       {showForm && (
         <ContactForm
-          newContact={newContact}
-          setNewContact={setNewContact}
-          editingContact={editingContact}
+          newContact={contatoEditado}
+          setNewContact={setContatoEditado}
           onSave={handleSaveContact}
           onCancel={cancelEdit}
         />

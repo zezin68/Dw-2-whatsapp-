@@ -1,57 +1,54 @@
-import styles from './ContactForm.module.css';
+import styles from "./ContactForm.module.css";
 
-const ContactForm = ({ 
-  newContact, 
-  setNewContact, 
-  editingContact, 
-  onSave, 
-  onCancel 
-}) => {
+const ContactForm = ({ newContact, setNewContact, onSave, onCancel }) => {
   const handleChange = (event) => {
     const value = event.target.value;
-    // Remover qualquer coisa que não seja número (conjunto específico)
-    const onlyNumbers = value.replace(/\D/g, '');
-  
-    // Limitar a 11 números
-    if (onlyNumbers.length <= 11) {
-      setNewContact(prev => ({ ...prev, telefone: onlyNumbers }))
+    const onlyNumbers = value.replace(/\D/g, "").slice(0, 11);
+
+    let formatado = onlyNumbers;
+
+    if (formatado.length > 2) {
+      formatado = `(${formatado.slice(0, 2)}) ${formatado.slice(2)}`;
     }
+    if (formatado.length > 9) {
+      formatado = `${formatado.slice(0, 9)}-${formatado.slice(9)}`;
+    }
+
+    setNewContact((prev) => ({ ...prev, telefone: formatado }));
   };
-  return ( //={styles["contactBook"]}
+  return (
+    //={styles["contactBook"]}
     <div className={styles["contactForm"]}>
-      <h3 className={styles["formTitle"]}>
-        {editingContact ? 'Editar Contato' : 'Novo Contato'}
-      </h3>
+      <h3 className={styles["formTitle"]}>Editar Contato</h3>
       <div className={["formInputs"]}>
         <div className={["inputGroup"]}>
           <label className={["inputLabel"]}>Nome</label>
           <input
             type="text"
             value={newContact.nome}
-            onChange={(e) => setNewContact(prev => ({ ...prev, nome: e.target.value }))}
+            onChange={(e) =>
+              setNewContact((prev) => ({ ...prev, nome: e.target.value }))
+            }
             placeholder="Nome do contato"
-            className={["formInput"]}/>
+            className={["formInput"]}
+          />
         </div>
         <div className={["inputGroup"]}>
           <label className={["inputLabel"]}>Número</label>
           <input
             type="text"
             value={newContact.telefone}
-            onChange={(e) => handleChange(e) }
+            onChange={(e) => handleChange(e)}
             placeholder="Número"
             className="form-input"
           />
         </div>
       </div>
       <div className={["formButtons"]}>
-        <button
-          onClick={onSave}
-          className={["formButton saveButton"]}>
-          {editingContact ? 'Atualizar' : 'Salvar'}
+        <button onClick={onSave} className={["formButton saveButton"]}>
+          Atualizar
         </button>
-        <button
-          onClick={onCancel}
-          className={["form-button cancel-button"]}>
+        <button onClick={onCancel} className={["form-button cancel-button"]}>
           Cancelar
         </button>
       </div>
