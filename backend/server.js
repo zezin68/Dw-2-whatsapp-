@@ -3,16 +3,15 @@ import dotenv from "dotenv";
 import cors from "cors";
 import Groq from "groq-sdk";
 
-dotenv.config({ path: "../.env" });
+dotenv.config(); // lê variáveis do painel Render
 
 const app = express();
-const port = 5000;
 
 app.use(
   cors({
     origin: [
       "http://localhost:5173", // dev local
-      "https://seu-frontend.onrender.com", // deploy do frontend
+      "https://seu-frontend.onrender.com", // deploy frontend
     ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
@@ -25,10 +24,8 @@ app.use(express.json());
 
 app.post("/chat", async (req, res) => {
   const { prompt } = req.body;
-
-  if (!prompt || !prompt.trim()) {
+  if (!prompt?.trim())
     return res.status(400).json({ error: "Prompt é obrigatório" });
-  }
 
   try {
     const completion = await groq.chat.completions.create({
