@@ -1,4 +1,4 @@
-.link-generator {
+.linkGenerator {
   background: white;
   border-radius: 1rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -6,38 +6,38 @@
   margin-bottom: 2rem;
 }
 
-.link-generator-header {
+.linkGeneratorHeader {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
-.link-generator-icon {
+.linkGeneratorIcon {
   width: 1.5rem;
   height: 1.5rem;
   color: #10b981;
 }
 
-.link-generator h2 {
+.linkGenerator h2 {
   font-size: 1.5rem;
   font-weight: 600;
   color: #1f2937;
   margin: 0;
 }
 
-.link-generator-form {
+.linkGeneratorForm {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.form-group {
+.formGroup {
   display: flex;
   flex-direction: column;
 }
 
-.form-label {
+.formLabel {
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
@@ -45,7 +45,7 @@
   margin-bottom: 0.5rem;
 }
 
-.form-input {
+.formInput {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid #d1d5db;
@@ -55,12 +55,12 @@
   box-sizing: border-box;
 }
 
-.form-input:focus {
+.formInput:focus {
   outline: none;
   border-color: #10b981;
 }
 
-.form-textarea {
+.formTextarea {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid #d1d5db;
@@ -72,12 +72,12 @@
   font-family: inherit;
 }
 
-.form-textarea:focus {
+.formTextarea:focus {
   outline: none;
   border-color: #10b981;
 }
 
-.generate-button {
+.generateButton {
   width: 100%;
   background: #10b981;
   color: white;
@@ -94,11 +94,11 @@
   font-size: 1rem;
 }
 
-.generate-button:hover {
+.generateButton:hover {
   background: #059669;
 }
 
-.button-icon {
+.buttonIcon {
   width: 1.25rem;
   height: 1.25rem;
 }

@@ -1,14 +1,14 @@
 import { MessageCircle } from 'lucide-react';
-import './Header.module.css';
+import styles from './Header.module.css';
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="headerTitle">
-        <MessageCircle className="headerIcon" />
+    <header className={styles.header}>
+      <div className={styles.headerTitle}>
+        <MessageCircle className={styles.headerIcon} />
         <h1>WhatsHub</h1>
       </div>
-      <p className="headerDescription">
+      <p className={styles.headerDescription}>
         O jeito mais rápido de iniciar conversas no WhatsApp. Gere links instantâneos e 
         mantenha seus contatos organizados.
       </p>

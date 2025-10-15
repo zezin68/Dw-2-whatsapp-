@@ -40,7 +40,7 @@ const ContactForm = ({ newContact, setNewContact, onSave, onCancel }) => {
             value={newContact.telefone}
             onChange={(e) => handleChange(e)}
             placeholder="Número"
-            className="form-input"
+            className="formInput"
           />
         </div>
       </div>
@@ -48,7 +48,7 @@ const ContactForm = ({ newContact, setNewContact, onSave, onCancel }) => {
         <button onClick={onSave} className={["formButton saveButton"]}>
           Atualizar
         </button>
-        <button onClick={onCancel} className={["form-button cancel-button"]}>
+        <button onClick={onCancel} className={["formButton cancelButton"]}>
           Cancelar
         </button>
       </div>

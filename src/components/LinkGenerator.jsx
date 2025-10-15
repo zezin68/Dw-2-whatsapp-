@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import CopyLink from "./CopyLink";
-import "./LinkGenerator.css";
+import styles from "./LinkGenerator.module.css";
 
 const LinkGenerator = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -41,37 +41,37 @@ const LinkGenerator = () => {
   };
 
   return (
-    <div className="link-generator">
-      <div className="link-generator-header">
-        <MessageCircle className="link-generator-icon" />
+    <div className={styles.linkGenerator}>
+      <div className={styles.linkGeneratorHeader}>
+        <MessageCircle className={styles.linkGeneratorIcon} />
         <h2>Gerador de Links</h2>
       </div>
 
-      <div className="link-generator-form">
-        <div className="form-group">
-          <label className="form-label">Número do WhatsApp</label>
+      <div className={styles.linkGeneratorForm}>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel}>Número do WhatsApp</label>
           <input
             type="text"
             value={displayPhone}
             onChange={(e) => formatPhoneNumber(e.target.value)}
             placeholder="(XX) XXXXX-XXXX"
-            className="form-input"
+            className={styles.formInput}
           />
         </div>
 
-        <div className="form-group">
-          <label className="form-label">Mensagem (opcional)</label>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel}>Mensagem (opcional)</label>
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Digite sua mensagem aqui..."
             rows={4}
-            className="form-textarea"
+            className={styles.formTextarea}
           />
         </div>
 
-        <button onClick={generateWhatsAppLink} className="generate-button">
-          <MessageCircle className="button-icon" />
+        <button onClick={generateWhatsAppLink} className={styles.generateButton}>
+          <MessageCircle className={styles.buttonIcon} />
           Preparar Mensagem
         </button>
       </div>
