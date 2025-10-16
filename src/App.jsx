@@ -22,6 +22,7 @@ const App = () => {
               <button
                 className={styles["musica"]}
                 onClick={() =>
+                {/* Uma pequena brincadeirinha que quisemos fazer */}
                   window.open(
                     "https://youtu.be/YBez2FYTubg?si=ZX8YqlcdkRxUZY63",
                     "_blank"
