@@ -11,7 +11,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", // dev local
-      "https://seu-frontend.onrender.com", // deploy frontend
+      "https://whatshub-0ioy.onrender.com", // deploy frontend
     ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],

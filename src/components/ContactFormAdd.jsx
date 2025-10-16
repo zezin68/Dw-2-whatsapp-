@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useContatos } from "../Context";
-import styles from "./ContactForm.module.css";
+import styles from "./ContactFormAdd.module.css";
 
 function ContactFormAdd({ onCancel }) {
     const [novoContato, setNovoContato] = useState({nome:"", telefone: ""});
@@ -22,55 +22,63 @@ function ContactFormAdd({ onCancel }) {
   };
 
     const onSave = async () => {
-      if(!novoContato.nome && !novoContato.telefone){
-        alert("Todos os campos devem estar preenchido!");
-      }else if(novoContato.telefone < 10){
+      if(!novoContato.nome || !novoContato.telefone){
+        alert("Todos os campos devem estar preenchidos!");
+        return;
+      }
+      
+      const onlyNumbers = novoContato.telefone.replace(/\D/g, "");
+      if(onlyNumbers.length < 10){
         alert("Número de telefone muito curto!");
         return;
       }
+      
       await adicionarContatos(novoContato);
       alert("Contato criado!")
       onCancel();
     }
 
-    return ( <div className={styles["contactForm"]}>
-      <h3 className={styles["formTitle"]}>
-        Novo Contato
-      </h3>
-      <div className={["formInputs"]}>
-        <div className={["inputGroup"]}>
-          <label className={["inputLabel"]}>Nome</label>
-          <input
-            type="text"
-            value={novoContato.nome}
-            onChange={(e) => setNovoContato(prev => ({ ...prev, nome: e.target.value }))}
-            placeholder="Nome do contato"
-            className={["formInput"]}/>
+    return ( 
+      <div className={styles["contactForm"]}>
+        <h3 className={styles["formTitle"]}>
+          Novo Contato
+        </h3>
+        <div className={styles["formInputs"]}>
+          <div className={styles["inputGroup"]}>
+            <label className={styles["inputLabel"]}>Nome</label>
+            <input
+              type="text"
+              value={novoContato.nome}
+              onChange={(e) => setNovoContato(prev => ({ ...prev, nome: e.target.value }))}
+              placeholder="Nome do contato"
+              className={styles["formInput"]}
+            />
+          </div>
+          <div className={styles["inputGroup"]}>
+            <label className={styles["inputLabel"]}>Número</label>
+            <input
+              type="text"
+              value={novoContato.telefone}
+              onChange={(e) => formatPhoneNumber(e.target.value)}
+              placeholder="(XX) XXXXX-XXXX"
+              className={styles["formInput"]}
+            />
+          </div>
         </div>
-        <div className={["inputGroup"]}>
-          <label className={["inputLabel"]}>Número</label>
-          <input
-            type="text"
-            value={novoContato.telefone}
-            onChange={(e) => formatPhoneNumber(e.target.value)}
-            placeholder="Número"
-            className="form-input"
-          />
+        <div className={styles["formButtons"]}>
+          <button
+            onClick={onSave}
+            className={`${styles["formButton"]} ${styles["saveButton"]}`}>
+            Salvar
+          </button>
+          <button
+            onClick={onCancel}
+            className={`${styles["formButton"]} ${styles["cancelButton"]}`}>
+            Cancelar
+          </button>
         </div>
-      </div>
-      <div className={["formButtons"]}>
-        <button
-          onClick={onSave}
-          className={["formButton saveButton"]}>
-          Salvar
-        </button>
-        <button
-          onClick={onCancel}
-          className={["form-button cancel-button"]}>
-          Cancelar
-        </button>
-      </div>
-    </div> );
+      </div> 
+    );
 }
 
 export default ContactFormAdd;

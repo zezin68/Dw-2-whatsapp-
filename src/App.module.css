@@ -3,38 +3,38 @@
     background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 50%, #ecfdf5 100%);
   }
   
-  .app-container {
+  .appContainer {
     max-width: 75rem;
     margin: 0 auto;
     padding: 3rem 1rem;
   }
   
-  .app-content {
+  .appContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: start;
   }
   
-  .app-footer {
+  .appFooter {
     text-align: center;
     margin-top: 3rem;
     color: #6b7280;
   }
   
-  .app-footer p {
+  .appFooter p {
     margin: 0;
   }
   
   @media (max-width: 1024px) {
-    .app-content {
+    .appContent {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
   }
   
   @media (max-width: 768px) {
-    .app-container {
+    .appContainer {
       padding: 2rem 1rem;
     }
   }

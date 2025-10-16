@@ -2,26 +2,25 @@ import Header from "./components/Header";
 import LinkGenerator from "./components/LinkGenerator";
 import ContactBook from "./components/ContactBook";
 import Chatbot from "./components/ChatBot";
-import { useState } from "react";
 import { ContatosProvider } from "./Context";
-import "./App.css";
+import styles from "./App.module.css";
 
 const App = () => {
   return (
     <ContatosProvider>
-      <div className="app">
-        <div className="app-container">
+      <div className={styles["app"]}>
+        <div className={styles["appContainer"]}>
           <Header />
-          <div className="app-content">
+          <div className={styles["appContent"]}>
             <LinkGenerator />
             <ContactBook />
           </div>
 
-          <footer className="app-footer">
+          <footer className={styles["appFooter"]}>
             <p>
               WhatsHub - Simplifique suas conversas no WhatsApp
               <button
-                className="musica"
+                className={styles["musica"]}
                 onClick={() =>
                   window.open(
                     "https://youtu.be/YBez2FYTubg?si=ZX8YqlcdkRxUZY63",

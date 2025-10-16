@@ -37,7 +37,7 @@ const Chatbot = () => {
     <>
       {/* Botão Flutuante */}
       <button
-        className={styles.chatbotToggle}
+        className={styles["chatbotToggle"]}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Abrir chat"
       >
@@ -60,11 +60,11 @@ const Chatbot = () => {
 
       {/* Container do Chat */}
       {isOpen && (
-        <div className={styles.chatbotContainer}>
-          <div className={styles.chatbotHeader}>
-            <h3 className={styles.chatbotTitle}>ChatBot</h3>
+        <div className={styles["chatbotContainer"]}>
+          <div className={styles["chatbotHeader"]}>
+            <h3 className={styles["chatbotTitle"]}>ChatBot</h3>
             <button
-              className={styles.chatbotClose}
+              className={styles["chatbotClose"]}
               onClick={() => setIsOpen(false)}
               aria-label="Fechar chat"
             >
@@ -73,7 +73,7 @@ const Chatbot = () => {
           </div>
 
           <textarea
-            className={styles.chatbotTextarea}
+            className={styles["chatbotTextarea"]}
             rows={3}
             placeholder="Digite sua pergunta..."
             value={prompt}
@@ -81,7 +81,7 @@ const Chatbot = () => {
           />
 
           <button
-            className={styles.chatbotButton}
+            className={styles["chatbotButton"]}
             onClick={handleSend}
             disabled={loading || !prompt.trim()}
           >
@@ -89,13 +89,13 @@ const Chatbot = () => {
           </button>
 
           {error && (
-            <div className={styles.chatbotError}>
+            <div className={styles["chatbotError"]}>
               <strong>Erro:</strong> {error}
             </div>
           )}
 
           {answer && (
-            <div className={styles.chatbotAnswer}>
+            <div className={styles["chatbotAnswer"]}>
               <strong>Resposta:</strong>
               <p>{answer}</p>
             </div>
