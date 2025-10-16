@@ -41,37 +41,37 @@ const LinkGenerator = () => {
   };
 
   return (
-    <div className={styles.linkGenerator}>
-      <div className={styles.linkGeneratorHeader}>
-        <MessageCircle className={styles.linkGeneratorIcon} />
+    <div className={styles["linkGenerator"]}>
+      <div className={styles["linkGeneratorHeader"]}>
+        <MessageCircle className={styles["linkGeneratorIcon"]} />
         <h2>Gerador de Links</h2>
       </div>
 
-      <div className={styles.linkGeneratorForm}>
-        <div className={styles.formGroup}>
-          <label className={styles.formLabel}>Número do WhatsApp</label>
+      <div className={styles["linkGeneratorForm"]}>
+        <div className={styles["formGroup"]}>
+          <label className={styles["formLabel"]}>Número do WhatsApp</label>
           <input
             type="text"
             value={displayPhone}
             onChange={(e) => formatPhoneNumber(e.target.value)}
             placeholder="(XX) XXXXX-XXXX"
-            className={styles.formInput}
+            className={styles["formInput"]}
           />
         </div>
 
-        <div className={styles.formGroup}>
-          <label className={styles.formLabel}>Mensagem (opcional)</label>
+        <div className={styles["formGroup"]}>
+          <label className={styles["formLabel"]}>Mensagem (opcional)</label>
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Digite sua mensagem aqui..."
             rows={4}
-            className={styles.formTextarea}
+            className={styles["formTextarea"]}
           />
         </div>
 
-        <button onClick={generateWhatsAppLink} className={styles.generateButton}>
-          <MessageCircle className={styles.buttonIcon} />
+        <button onClick={generateWhatsAppLink} className={styles["generateButton"]}>
+          <MessageCircle className={styles["buttonIcon"]} />
           Preparar Mensagem
         </button>
       </div>

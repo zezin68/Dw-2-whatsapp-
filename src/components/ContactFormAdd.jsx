@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useContatos } from "../Context";
-import styles from "./ContactForm.module.css";
+import styles from "./ContactFormAdd.module.css";
 
 function ContactFormAdd({ onCancel }) {
     const [novoContato, setNovoContato] = useState({nome:"", telefone: ""});
@@ -37,36 +37,36 @@ function ContactFormAdd({ onCancel }) {
       <h3 className={styles["formTitle"]}>
         Novo Contato
       </h3>
-      <div className={["formInputs"]}>
-        <div className={["inputGroup"]}>
-          <label className={["inputLabel"]}>Nome</label>
+      <div className={styles["formInputs"]}>
+        <div className={styles["inputGroup"]}>
+          <label className={styles["inputLabel"]}>Nome</label>
           <input
             type="text"
             value={novoContato.nome}
             onChange={(e) => setNovoContato(prev => ({ ...prev, nome: e.target.value }))}
             placeholder="Nome do contato"
-            className={["formInput"]}/>
+            className={styles["formInput"]}/>
         </div>
-        <div className={["inputGroup"]}>
-          <label className={["inputLabel"]}>Número</label>
+        <div className={styles["inputGroup"]}>
+          <label className={styles["inputLabel"]}>Número</label>
           <input
             type="text"
             value={novoContato.telefone}
             onChange={(e) => formatPhoneNumber(e.target.value)}
             placeholder="Número"
-            className="form-input"
+            className={styles["formInput"]}
           />
         </div>
       </div>
-      <div className={["formButtons"]}>
+      <div className={styles["formButtons"]}>
         <button
           onClick={onSave}
-          className={["formButton saveButton"]}>
+          className={styles["formButton saveButton"]}>
           Salvar
         </button>
         <button
           onClick={onCancel}
-          className={["form-button cancel-button"]}>
+          className={styles["formButton cancelButton"]}>
           Cancelar
         </button>
       </div>
