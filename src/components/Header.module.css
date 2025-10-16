@@ -1,26 +1,3 @@
-:root {
-  /*Cores */
-  --color-icon: #10b981;
-  --color-text-title: #1f2937;
-  --color-text-description: #6b7280;
-
-  /*Espaçamento */
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 3rem;
-
-  /*Tipografia */
-  --font-size-h1: 2.25rem;
-  --font-size-h1-mobile: 1.875rem;
-  --font-size-description: 1.125rem;
-  --font-size-description-mobile: 1rem;
-  --font-weight-bold: 700;
-
-  /*Layout */
-  --max-width-text: 42rem;
-  --transition: all 0.2s;
-}
-
 /*Cabeçalho*/
 .header {
   text-align: center;

@@ -1,20 +1,3 @@
-:root {
-  /*Cores principais */
-  --color-bg: #ffffff;
-  --color-primary: #10b981;
-  --color-primary-hover: #059669;
-  --color-text-title: #1f2937;
-  --color-text-secondary: #6b7280;
-
-  /*Layout e bordas */
-  --border-radius: 1rem;
-  --button-radius: 0.5rem;
-  --card-padding: 2rem;
-
-  /* 🌫️ Sombras */
-  --shadow-base: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
 /* Caixa */
 .contactBook {
   background: var(--color-bg);

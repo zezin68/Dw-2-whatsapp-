@@ -1,31 +1,3 @@
-:root {
-  /*Cores principais */
-  --color-bg-form: #f9fafb;
-  --color-border: #e5e7eb;
-  --color-border-input: #d1d5db;
-  --color-text-title: #1f2937;
-  --color-text-label: #374151;
-  --color-btn-save: #10b981;
-  --color-btn-save-hover: #059669;
-  --color-btn-cancel: #6b7280;
-  --color-btn-cancel-hover: #4b5563;
-
-  /*  Espaçamento */
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-
-  /*Tipografia */
-  --font-size-title: 1.125rem;
-  --font-size-label: 0.875rem;
-  --font-size-input: 1rem;
-  --font-weight-medium: 500;
-
-  /*Layout */
-  --border-radius: 0.5rem;
-  --transition: all 0.2s;
-}
-
 /* Formulário de contato === */
 .contactForm {
   margin-bottom: var(--space-lg);

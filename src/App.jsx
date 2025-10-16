@@ -4,6 +4,7 @@ import ContactBook from "./components/ContactBook";
 import Chatbot from "./components/ChatBot";
 import { ContatosProvider } from "./Context";
 import styles from "./App.module.css";
+import "./components/global.css";
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
               <button
                 className={styles["musica"]}
                 onClick={() =>
-                {/* Uma pequena brincadeirinha que quisemos fazer */}
+                  // Uma pequena brincadeirinha que quisemos fazer
                   window.open(
                     "https://youtu.be/YBez2FYTubg?si=ZX8YqlcdkRxUZY63",
                     "_blank"

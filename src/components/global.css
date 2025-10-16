@@ -1,0 +1,65 @@
+:root {
+  /* Cores principais */
+  --color-bg: #ffffff;
+  --color-primary: #10b981;
+  --color-primary-hover: #059669;
+  --color-text-title: #1f2937;
+  --color-text-secondary: #6b7280;
+
+  /* Formulários e inputs */
+  --color-bg-form: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-border-input: #d1d5db;
+  --color-text-label: #374151;
+  --color-btn-save: #10b981;
+  --color-btn-save-hover: #059669;
+  --color-btn-cancel: #6b7280;
+  --color-btn-cancel-hover: #4b5563;
+
+  /* Itens da lista */
+  --color-bg-item: #f9fafb;
+  --color-bg-hover: #f3f4f6;
+  --color-text-name: #1f2937;
+  --color-text-phone: #6b7280;
+  --color-btn-message: #10b981;
+  --color-btn-message-hover: #059669;
+  --color-btn-edit: #6b7280;
+  --color-btn-edit-hover: #4b5563;
+  --color-btn-delete: #ef4444;
+  --color-btn-delete-hover-bg: #fef2f2;
+
+  /* Ícones e textos adicionais */
+  --color-icon: #10b981;
+  --color-text-description: #6b7280;
+
+  /* Layout e bordas */
+  --border-radius: 0.5rem;
+  --button-radius: 0.5rem;
+  --card-padding: 1.5rem;
+  --max-width-text: 42rem;
+
+  /* Sombras */
+  --shadow-base: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Espaçamento */
+  --space-xs: 0.25rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 3rem;
+
+  /* Tipografia */
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-input: 1rem;
+  --font-size-title: 1.125rem;
+  --font-size-label: 0.875rem;
+  --font-size-h1: 2.25rem;
+  --font-size-h1-mobile: 1.875rem;
+  --font-size-description: 1.125rem;
+  --font-size-description-mobile: 1rem;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Transições */
+  --transition: all 0.2s;
+}

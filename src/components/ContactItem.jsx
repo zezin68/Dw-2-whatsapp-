@@ -1,14 +1,13 @@
 import { Trash2 } from "lucide-react"; // Ícone de lixeira para o botão de excluir
-import styles from "./ContactItem.module.css"; 
+import styles from "./ContactItem.module.css";
 
 const ContactItem = ({ contact, onEdit, onDelete, onMessage }) => {
   return (
     // Container principal do item de contato
     <div className={styles["contactItem"]}>
-      
       {/* Seção com as informações do contato */}
       <div className={styles["contactInfo"]}>
-        <h3 className={styles["contactName"]}>{contact.nome}</h3> 
+        <h3 className={styles["contactName"]}>{contact.nome}</h3>
         <p className={styles["contactPhone"]}>{contact.telefone}</p>
       </div>
 
@@ -33,7 +32,7 @@ const ContactItem = ({ contact, onEdit, onDelete, onMessage }) => {
         <button
           onClick={() => onDelete(contact.id)}
           className={`${styles["actionButton"]} ${styles["deleteButton"]}`}
-          {/*Quando você deixa o scroll parado em cima do ícone, aparece "excluir"*/}
+          // Quando você deixa o scroll parado em cima do ícone, aparece "excluir"
           title="Excluir"
         >
           {/* Ícone de lixeira */}

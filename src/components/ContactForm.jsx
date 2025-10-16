@@ -1,4 +1,4 @@
-import styles from "./ContactForm.module.css"; 
+import styles from "./ContactForm.module.css";
 
 // Componente de formulário para editar um contato existente
 const ContactForm = ({ newContact, setNewContact, onSave, onCancel }) => {
@@ -28,10 +28,10 @@ const ContactForm = ({ newContact, setNewContact, onSave, onCancel }) => {
       {/* Título do formulário */}
       <h3 className={styles["formTitle"]}>Editar Contato</h3>
 
-      <div className={["formInputs"]}>
+      <div className={styles["formInputs"]}>
         {/* Campo para editar o nome do contato */}
-        <div className={["inputGroup"]}>
-          <label className={["inputLabel"]}>Nome</label>
+        <div className={styles["inputGroup"]}>
+          <label className={styles["inputLabel"]}>Nome</label>
           <input
             type="text"
             value={newContact.nome}
@@ -39,32 +39,38 @@ const ContactForm = ({ newContact, setNewContact, onSave, onCancel }) => {
               setNewContact((prev) => ({ ...prev, nome: e.target.value }))
             }
             placeholder="Nome do contato"
-            className={["formInput"]}
+            className={styles["formInput"]}
           />
         </div>
 
         {/* Campo para editar o número de telefone com formatação automática */}
-        <div className={["inputGroup"]}>
-          <label className={["inputLabel"]}>Número</label>
+        <div className={styles["inputGroup"]}>
+          <label className={styles["inputLabel"]}>Número</label>
           <input
             type="text"
             value={newContact.telefone}
             onChange={(e) => handleChange(e)}
             placeholder="Número"
-            className="formInput"
+            className={styles["formInput"]}
           />
         </div>
       </div>
 
       {/* Botões de ação do formulário */}
-      <div className={["formButtons"]}>
+      <div className={styles["formButtons"]}>
         {/* Botão para salvar alterações (aciona função onSave) */}
-        <button onClick={onSave} className={["formButton saveButton"]}>
+        <button
+          onClick={onSave}
+          className={`${styles["formButton"]} ${styles["saveButton"]}`}
+        >
           Atualizar
         </button>
 
         {/* Botão para cancelar a edição (aciona função onCancel) */}
-        <button onClick={onCancel} className={["formButton cancelButton"]}>
+        <button
+          onClick={onCancel}
+          className={`${styles["formButton"]} ${styles["cancelButton"]}`}
+        >
           Cancelar
         </button>
       </div>
@@ -73,4 +79,3 @@ const ContactForm = ({ newContact, setNewContact, onSave, onCancel }) => {
 };
 
 export default ContactForm;
-
