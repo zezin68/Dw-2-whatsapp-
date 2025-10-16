@@ -64,12 +64,18 @@ GROQ_API_KEY=sua_chave_aqui
 ###  Executar o projeto  
 
 #### Rodar o backend:
+Primeiro dê um `npm i` na pasta `backend`
+```bash
+npm i
+```
+Após isso, rode o servidor ( na mesma pasta )
 ```bash
 node server.js
 ```
-Primeiro
+
 
 #### Rodar o frontend (em outro terminal):
+Na pasta do whatshub, rode o servidor local
 ```bash
 npm run dev
 ```
