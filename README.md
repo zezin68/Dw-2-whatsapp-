@@ -86,7 +86,15 @@ Ou em nosso site online : [👉 Acesse aqui](https://whatshub-0ioy.onrender.com/
 
 ---
 
-## 💡 Funcionalidade Extra  
+## 🤖 Como implementar o chatbot
+
+Ao utilizarmos a API do Groq, é necessário criar um servidor para intermediar o envio da mensagem, pois a biblioteaca utilizada só aceita requisições que venham de um  backend.
+
+Assim, com o backend criado, e com uma chave da api Groq ( após criar uma conta no Groq, será disponibilizada uma chave de API, copie essa chave e coloque no .env ), podemos realizar um `Fetch` para o servidor da Groq, conseguindo assim acessso a um `chatbot`
+
+---
+
+## 💡 Funcionalidade Extra 
 
 ### 🔍 Funcionalidade Implementada
 **Integração com o modelo de IA Groq** — permite que o sistema analise mensagens e gere respostas automáticas inteligentes, simulando um chatbot real.
