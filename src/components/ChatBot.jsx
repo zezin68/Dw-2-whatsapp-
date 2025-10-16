@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import styles from "./Chatbot.module.css";
 
 const Chatbot = () => {
+  // Estados controlados para o prompt do usuário, resposta do bot, status de carregamento, erro e visibilidade do chat
   const [prompt, setPrompt] = useState("");
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Função para enviar o prompt ao backend
+  // Função responsável por enviar o prompt para a API backend e lidar com a resposta
   const handleSend = async () => {
-    if (!prompt.trim()) return;
+    if (!prompt.trim()) return; // Evita requisições com prompt vazio
     setLoading(true);
     setError(null);
 
@@ -18,29 +19,30 @@ const Chatbot = () => {
       const res = await fetch("https://dw-2-whatsapp.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ prompt }), // Envia o prompt como JSON
       });
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error || "Erro desconhecido");
+      if (!res.ok) throw new Error(data.error || "Erro desconhecido"); // Lida com erros HTTP e da API
 
-      setAnswer(data.answer);
+      setAnswer(data.answer); // Atualiza a resposta exibida
     } catch (e) {
-      setError(e.message);
+      setError(e.message); // Captura qualquer erro da requisição
     } finally {
-      setLoading(false);
+      setLoading(false); // Finaliza o estado de carregamento
     }
   };
 
   return (
     <>
-      {/* Botão Flutuante */}
+      {/* Botão flutuante para abrir/fechar o chat */}
       <button
         className={styles["chatbotToggle"]}
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Abrir chat"
+        aria-label="Abrir chat" // Acessibilidade
       >
+        {/* Ícone de balão de chat (SVG) */}
         <svg
           width="32"
           height="32"
@@ -58,11 +60,12 @@ const Chatbot = () => {
         </svg>
       </button>
 
-      {/* Container do Chat */}
+      {/* Interface do ChatBot, exibida apenas quando o chat está aberto */}
       {isOpen && (
         <div className={styles["chatbotContainer"]}>
           <div className={styles["chatbotHeader"]}>
             <h3 className={styles["chatbotTitle"]}>ChatBot</h3>
+            {/* Botão para fechar o chat */}
             <button
               className={styles["chatbotClose"]}
               onClick={() => setIsOpen(false)}
@@ -72,6 +75,7 @@ const Chatbot = () => {
             </button>
           </div>
 
+          {/* Campo de entrada do usuário */}
           <textarea
             className={styles["chatbotTextarea"]}
             rows={3}
@@ -80,6 +84,7 @@ const Chatbot = () => {
             onChange={(e) => setPrompt(e.target.value)}
           />
 
+          {/* Botão de envio, desabilitado quando carregando ou o prompt está vazio */}
           <button
             className={styles["chatbotButton"]}
             onClick={handleSend}
@@ -88,12 +93,14 @@ const Chatbot = () => {
             {loading ? "Carregando..." : "Enviar"}
           </button>
 
+          {/* Exibição de erro, se houver */}
           {error && (
             <div className={styles["chatbotError"]}>
               <strong>Erro:</strong> {error}
             </div>
           )}
 
+          {/* Exibição da resposta da API, se houver */}
           {answer && (
             <div className={styles["chatbotAnswer"]}>
               <strong>Resposta:</strong>
